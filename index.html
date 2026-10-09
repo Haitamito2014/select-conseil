@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Select Conseil, cabinet de conseil à Casablanca depuis 2008 : comptabilité, fiscalité, juridique, management et ressources humaines.">
+<meta name="theme-color" content="#940000">
+<link rel="icon" type="image/svg+xml" href="assets/img/select-conseil-icone.svg">
+<title>Select Conseil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: corporate group site, video-led. Full-screen film hero, scroll-driven statement, interactive expertise switcher, film band with live counters, split cabinet story, contact. */
+:root{
+  --red:#940000;         /* logo red */
+  --red-bright:#c3161d;
+  --red-deep:#4d0003;
+  --grey:#c0c0c0;        /* logo grey */
+  --ink:#140d0e;         /* near-black with red bias */
+  --bg:#ffffff;
+  --bg-2:#f5f1f1;
+  --fg:#140d0e;
+  --muted:#685b5c;
+  --line:#e8e0e0;
+  --surface:#ffffff;
+  --accent-text:#940000;
+  --logo-red:#940000; --logo-grey:#c0c0c0;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Hanken Grotesk","Segoe UI",Arial,sans-serif;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  --wrap:1280px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#110b0c; --bg-2:#1a1213; --fg:#f4eded; --muted:#bcaeaf; --line:#33282a; --surface:#1a1213; --accent-text:#ff8f8f;
+    --logo-red:#d0262c; --logo-grey:#9a9495; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#110b0c; --bg-2:#1a1213; --fg:#f4eded; --muted:#bcaeaf; --line:#33282a; --surface:#1a1213; --accent-text:#ff8f8f;
+  --logo-red:#d0262c; --logo-grey:#9a9495; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video,svg{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--display);margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(16px,4.5vw,56px)}
+.kicker{display:inline-flex;align-items:center;gap:12px;font-family:var(--display);font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-text)}
+.kicker::before{content:"";width:28px;height:2px;background:currentColor}
+.h-xl{font-size:clamp(2.2rem,5vw,4.2rem);font-weight:800;font-stretch:80%;line-height:.98;letter-spacing:-.02em}
+:focus-visible{outline:3px solid var(--red-bright);outline-offset:3px;border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* buttons */
+.btn{--h:52px;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:var(--h);padding:0 26px;border-radius:999px;font-family:var(--display);font-weight:700;font-size:.98rem;letter-spacing:.01em;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease),transform .25s var(--ease)}
+.btn svg{width:18px;height:18px;transition:transform .3s var(--ease)}
+.btn:hover svg{transform:translateX(5px)}
+.btn:active{transform:scale(.98)}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-bright)}
+.btn-white{background:#fff;color:#940000}
+.btn-white:hover{background:#ffe9e9}
+.btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.btn:disabled{opacity:.6;cursor:wait}
+
+/* header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:60;padding-top:env(safe-area-inset-top,0px);transition:background .35s var(--ease),box-shadow .35s var(--ease),color .35s var(--ease);color:#fff}
+.hdr .bar{display:flex;align-items:center;justify-content:space-between;gap:20px;height:84px;transition:height .35s var(--ease)}
+.hdr.solid{background:var(--bg);color:var(--fg);box-shadow:0 1px 0 var(--line),0 10px 30px -20px rgba(20,13,14,.35)}
+.hdr.solid .bar{height:70px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:54px;height:46px;flex:none}
+.brand b{display:block;font-family:Arial,"Liberation Sans",Helvetica,sans-serif;font-weight:400;font-size:1.34rem;line-height:1;letter-spacing:.01em}
+.brand small{display:block;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;opacity:.75;margin-top:5px}
+.hdr:not(.solid) .brand{--logo-grey:rgba(255,255,255,.75);--logo-red:#fff}
+.hdr.solid .brand b{color:var(--accent-text)}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a{position:relative;font-family:var(--display);font-weight:600;font-size:.98rem;text-decoration:none;padding:12px 14px}
+.nav a:not(.btn)::after{content:"";position:absolute;left:14px;right:14px;bottom:6px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .3s var(--ease)}
+.nav a:not(.btn):hover::after,.nav a.on::after{transform:scaleX(1);transform-origin:left}
+.nav .btn{--h:46px;margin-left:12px;padding:0 22px}
+.hdr:not(.solid) .nav .btn{background:#fff;color:#940000}
+.burger{display:none;width:48px;height:48px;border-radius:12px;border:1px solid currentColor;background:none;color:inherit;cursor:pointer;place-items:center}
+.burger span,.burger span::before,.burger span::after{display:block;width:20px;height:2px;background:currentColor;position:relative;transition:transform .3s var(--ease),background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+.progress{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--red);transform-origin:left;transform:scaleX(var(--p,0))}
+
+/* hero */
+.hero{position:relative;min-height:min(92svh,920px);display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden;isolation:isolate;background:#2a0002}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(40,0,2,.92) 0%,rgba(110,0,4,.72) 42%,rgba(40,0,2,.25) 100%),linear-gradient(0deg,rgba(20,0,1,.75) 0%,rgba(20,0,1,0) 45%)}
+.hero-mark{position:absolute;right:-6vw;top:50%;width:min(62vw,820px);transform:translateY(-46%);z-index:-1;opacity:.16;--logo-grey:#fff;--logo-red:#fff;pointer-events:none}
+.hero .wrap{width:100%;padding-block:150px 40px}
+.hero .kicker{color:#ffd0d0}
+.hero h1{font-size:clamp(2.8rem,8.2vw,7.2rem);font-weight:900;font-stretch:72%;line-height:.9;letter-spacing:-.025em;margin-top:22px;max-width:12ch}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .line > span{display:block}
+.hero h1 em{font-style:normal;color:#ffb3b3}
+.hero .lede{font-size:clamp(1.05rem,1.5vw,1.25rem);max-width:54ch;margin-top:28px;color:#f7e6e6}
+.hero .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.hero-foot{border-top:1px solid rgba(255,255,255,.22);margin-top:56px;padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;font-size:.92rem;color:#f2dada}
+.hero-foot b{color:#fff;font-weight:600}
+.video-toggle{display:inline-flex;align-items:center;gap:10px;background:none;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:999px;padding:8px 16px;font:600 .85rem var(--body);cursor:pointer;min-height:40px}
+.video-toggle:hover{border-color:#fff}
+.video-toggle svg{width:14px;height:14px}
+.scroll-cue{display:inline-flex;align-items:center;gap:10px}
+.scroll-cue i{width:22px;height:36px;border:2px solid rgba(255,255,255,.7);border-radius:12px;position:relative}
+.scroll-cue i::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:cue 1.8s var(--ease) infinite}
+@keyframes cue{0%{transform:translateY(0);opacity:1}70%{transform:translateY(12px);opacity:0}100%{opacity:0}}
+
+/* marquee */
+.marquee{background:var(--red);color:#fff;overflow:hidden;border-block:1px solid rgba(255,255,255,.1)}
+.marquee .track{display:flex;width:max-content;animation:marq 38s linear infinite}
+.marquee ul{display:flex;list-style:none;margin:0;padding:18px 0;gap:0}
+.marquee li{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:clamp(1.3rem,2.4vw,2rem);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;display:flex;align-items:center}
+.marquee li::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--grey);margin:0 32px}
+@keyframes marq{to{transform:translateX(-50%)}}
+.marquee:hover .track{animation-play-state:paused}
+
+/* statement */
+.statement{padding-block:clamp(88px,12vw,160px)}
+.statement .grid{display:grid;grid-template-columns:minmax(0,.32fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:start}
+.statement .grid .kicker{margin-top:.9em}
+.statement p.big{font-family:var(--display);font-weight:600;font-stretch:90%;font-size:clamp(1.7rem,3.6vw,3.1rem);line-height:1.12;letter-spacing:-.015em}
+.statement p.big .w{transition:color .4s var(--ease)}
+.js .statement p.big .w{color:color-mix(in srgb,var(--fg) 32%,var(--bg))}
+.js .statement p.big .w.lit{color:var(--fg)}
+.js .statement p.big .w.lit.hl{color:var(--accent-text)}
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(48px,7vw,88px);border-top:1px solid var(--line)}
+.pillar{padding:32px 28px 8px 0;position:relative}
+.pillar + .pillar{padding-left:28px;border-left:1px solid var(--line)}
+.pillar .n{font-family:var(--display);font-size:.8rem;font-weight:700;letter-spacing:.18em;color:var(--accent-text)}
+.pillar h3{font-size:clamp(1.5rem,2.4vw,2rem);font-weight:800;font-stretch:85%;margin-top:14px}
+.pillar p{color:var(--muted);margin-top:10px;max-width:34ch}
+
+/* expertises switcher */
+.exp{background:var(--ink);color:#f4eded;padding-block:clamp(88px,11vw,150px);position:relative;overflow:hidden}
+.exp .kicker{color:#ff9d9d}
+.exp-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px;margin-bottom:clamp(36px,5vw,64px)}
+.exp-head h2{max-width:16ch}
+.exp-head p{color:#c9bcbd;max-width:44ch}
+.switch{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.tabs{display:flex;flex-direction:column;border-top:1px solid #3a2d2f}
+.tab{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:52px minmax(0,1fr) 28px;align-items:center;gap:12px;padding:22px 4px;border-bottom:1px solid #3a2d2f;position:relative;min-height:44px}
+.tab .i{font-family:var(--display);font-size:.85rem;font-weight:700;color:#8f7f80;letter-spacing:.1em;transition:color .3s}
+.tab .t{font-family:var(--display);font-weight:700;font-stretch:85%;font-size:clamp(1.25rem,2.1vw,1.75rem);line-height:1.1;color:#cdbfc0;transition:color .3s,transform .4s var(--ease)}
+.tab .a{width:22px;height:22px;color:#8f7f80;transition:transform .4s var(--ease),color .3s}
+.tab::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:#ff5a5f;transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.tab:hover .t{color:#fff;transform:translateX(6px)}
+.tab[aria-selected="true"] .t{color:#fff}
+.tab[aria-selected="true"] .i,.tab[aria-selected="true"] .a{color:#ff7a7e}
+.tab[aria-selected="true"] .a{transform:rotate(-45deg)}
+.tab[aria-selected="true"]::after{transform:scaleX(1)}
+.tab:focus-visible{outline:3px solid #ff7a7e;outline-offset:-3px}
+.stage{position:sticky;top:100px}
+.media{position:relative;aspect-ratio:4/3;max-width:100%;border-radius:20px;overflow:hidden;background:#2a1d1f}
+.media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .7s var(--ease),transform 1.4s var(--ease)}
+.media img.on{opacity:1;transform:scale(1)}
+.media::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,0,1,.55),rgba(20,0,1,0) 50%)}
+.media .tag{position:absolute;left:20px;bottom:18px;z-index:2;font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:#fff;background:var(--red);padding:8px 14px;border-radius:999px}
+.panel{margin-top:26px}
+.panel h3{font-size:clamp(1.5rem,2.4vw,2rem);font-weight:800;font-stretch:85%}
+.panel p{color:#d2c5c6;margin-top:10px;max-width:56ch}
+.panel ul{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.panel li{border:1px solid #4a3a3c;border-radius:999px;padding:7px 14px;font-size:.88rem;color:#efe3e3}
+.panel[hidden]{display:none!important}
+.panel.enter{animation:fadeUp .6s var(--ease) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* film band */
+.film{position:relative;color:#fff;overflow:hidden;isolation:isolate;background:#2a0002}
+.film video,.film .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.film::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(77,0,3,.92),rgba(148,0,0,.62))}
+.film .wrap{padding-block:clamp(88px,11vw,150px)}
+.film h2{font-size:clamp(2rem,4.6vw,3.8rem);font-weight:800;font-stretch:78%;line-height:1;max-width:18ch}
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:clamp(48px,6vw,80px);border-top:1px solid rgba(255,255,255,.3);padding-top:32px}
+.counter b{display:block;font-family:var(--display);font-weight:900;font-stretch:72%;font-size:clamp(3rem,7vw,6rem);line-height:.9;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.counter span{display:block;margin-top:12px;color:#ffe0e0;max-width:22ch}
+
+/* cabinet */
+.cabinet{padding-block:clamp(88px,11vw,150px)}
+.cab-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,88px);align-items:center}
+.cab-media{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(6,minmax(0,1fr));aspect-ratio:1/1.05;max-width:100%}
+.cab-media figure{margin:0;overflow:hidden;border-radius:18px;position:relative}
+.cab-media figure img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);will-change:transform}
+.cab-media .f1{grid-column:1/6;grid-row:1/5}
+.cab-media .f2{grid-column:3/7;grid-row:4/7;box-shadow:0 0 0 10px var(--bg)}
+.cab-media figcaption{position:absolute;left:14px;bottom:12px;font:700 .72rem var(--display);letter-spacing:.16em;text-transform:uppercase;color:#fff;background:rgba(20,0,1,.6);backdrop-filter:blur(6px);padding:6px 12px;border-radius:999px}
+.cabinet h2{margin-top:14px}
+.cab-copy{display:flex;flex-direction:column;gap:16px;margin-top:24px;color:var(--muted);max-width:56ch}
+.axes{list-style:none;padding:0;margin:30px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.axes li{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-weight:600}
+.axes li:nth-child(odd){padding-right:16px}
+.axes svg{width:20px;height:20px;color:var(--accent-text);flex:none}
+.partners{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.partners span{display:inline-flex;align-items:center;gap:10px;background:var(--bg-2);border-radius:999px;padding:10px 18px;font-weight:600;font-size:.95rem}
+.partners span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red)}
+
+/* clients */
+.clients{background:var(--bg-2);padding-block:clamp(80px,10vw,130px)}
+.clients-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px;margin-bottom:44px}
+.clients-head p{color:var(--muted);max-width:46ch}
+.cgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.cc{position:relative;background:var(--surface);border-radius:18px;padding:28px 24px 26px;display:flex;flex-direction:column;gap:12px;border:1px solid var(--line);overflow:hidden;transition:transform .4s var(--ease),border-color .3s}
+.cc::before{content:"";position:absolute;inset:auto 0 0 0;height:4px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.cc:hover{transform:translateY(-6px);border-color:transparent}
+.cc:hover::before{transform:scaleX(1)}
+.cc svg{width:42px;height:42px;color:var(--accent-text)}
+.cc h3{font-size:1.3rem;font-weight:800;font-stretch:88%}
+.cc p{color:var(--muted);font-size:.95rem}
+
+/* team film + CTA */
+.cta-film{position:relative;color:#fff;overflow:hidden;isolation:isolate;background:#2a0002}
+.cta-film video,.cta-film .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.cta-film::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(77,0,3,.94) 0%,rgba(148,0,0,.78) 50%,rgba(148,0,0,.35) 100%)}
+.cta-film .wrap{padding-block:clamp(80px,10vw,130px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:28px}
+.cta-film h2{font-size:clamp(2.4rem,6vw,5rem);font-weight:900;font-stretch:72%;line-height:.92;letter-spacing:-.02em}
+.cta-film p{margin-top:16px;color:#ffe2e2;max-width:46ch;font-size:1.08rem}
+
+/* contact */
+.contact{padding-block:clamp(88px,11vw,150px)}
+.ct-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,6vw,80px)}
+.contact h2{margin-top:14px}
+.info{list-style:none;margin:36px 0 0;padding:0;border-top:1px solid var(--line)}
+.info li{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:14px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.info .ico{width:48px;height:48px;border-radius:50%;background:var(--bg-2);display:grid;place-items:center;color:var(--accent-text)}
+.info .ico svg{width:20px;height:20px}
+.info small{display:block;color:var(--muted);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
+.info strong{font-weight:600;overflow-wrap:anywhere}
+.copy{background:none;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:0 16px;min-height:40px;font:600 .82rem var(--body);cursor:pointer}
+.copy:hover{border-color:var(--accent-text);color:var(--accent-text)}
+form{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3.4vw,40px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;position:relative;box-shadow:0 30px 60px -40px rgba(77,0,3,.35)}
+.field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-size:.86rem;font-weight:600}
+.field label .req{color:var(--accent-text)}
+.field input,.field select,.field textarea{font:inherit;font-size:1rem;min-height:50px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg);width:100%;transition:border-color .2s,box-shadow .2s}
+.field textarea{min-height:140px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent-text);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent-text) 18%,transparent)}
+.field .err{font-size:.82rem;color:var(--accent-text);min-height:0}
+.field.bad input,.field.bad textarea{border-color:var(--accent-text)}
+.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+.form-foot p{font-size:.84rem;color:var(--muted);max-width:42ch}
+.status{grid-column:1/-1;border-radius:14px;padding:14px 16px;background:var(--bg-2);border-left:4px solid var(--accent-text);font-size:.95rem}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* footer */
+footer{background:var(--ink);color:#d8cccd}
+.f-top{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:36px;padding-block:72px 44px}
+footer .brand{--logo-grey:#8f8a8b;--logo-red:#e0333a}
+footer .brand b{color:#fff}
+footer .about{color:#a99b9c;margin-top:18px;max-width:34ch;font-size:.95rem}
+footer h4{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:.95rem}
+footer a{text-decoration:none}
+footer a:hover{color:#fff;text-decoration:underline}
+.f-bot{border-top:1px solid #312627;padding-block:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:.84rem;color:#8f8283}
+.totop{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:50;width:52px;height:52px;border-radius:50%;background:var(--red);color:#fff;border:none;display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 30px -10px rgba(77,0,3,.6);opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .3s,transform .3s var(--ease)}
+.totop.show{opacity:1;transform:none;pointer-events:auto}
+.totop svg{width:20px;height:20px}
+
+/* reveal (content stays readable without JS; motion only when allowed) */
+@media (prefers-reduced-motion: no-preference){
+  .js .rv{opacity:.001;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+  .js .rv.in{opacity:1;transform:none}
+  .js .hero h1 .line > span{transform:translateY(105%);animation:rise 1.1s var(--ease) forwards;animation-delay:var(--d,0s)}
+  .js .hero .lede,.js .hero .cta,.js .hero-foot{animation:fadeUp 1s var(--ease) both;animation-delay:var(--d,.6s)}
+  @keyframes rise{to{transform:none}}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .marquee .track{animation:none}
+  .scroll-cue i::after{animation:none}
+  *{transition-duration:.01ms!important}
+}
+
+/* responsive */
+@media (max-width:1080px){
+  .cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .f-top{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:920px){
+  .burger{display:grid}
+  .nav{position:fixed;inset:0;top:0;background:var(--ink);color:#fff;flex-direction:column;align-items:stretch;justify-content:center;padding:100px clamp(16px,6vw,40px) 40px;gap:0;transform:translateY(-100%);transition:transform .5s var(--ease);visibility:hidden}
+  .nav.open{transform:none;visibility:visible}
+  .nav a{font-size:clamp(1.8rem,7vw,2.6rem);font-weight:800;font-stretch:80%;padding:14px 0;border-bottom:1px solid #312627}
+  .nav a:not(.btn)::after{display:none}
+  .nav .btn{margin:28px 0 0;font-size:1rem;--h:56px;border-bottom:none}
+  .burger{position:relative;z-index:2}
+  .hdr.menu-open{color:#fff;background:transparent;box-shadow:none}
+  .hdr.menu-open .brand{--logo-grey:rgba(255,255,255,.75);--logo-red:#fff}
+  .hdr.menu-open .brand b{color:#fff}
+  .statement .grid,.switch,.cab-grid,.ct-grid{grid-template-columns:minmax(0,1fr)}
+  .stage{position:relative;top:0;order:-1}
+  .counters{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
+  .hero-mark{opacity:.1;width:90vw;right:-30vw}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .hdr .bar{height:72px}
+  .brand small{display:none}
+  .brand svg{width:46px;height:40px}
+  .hero .wrap{padding-block:120px 28px}
+  .hero .cta .btn{flex:1 1 100%}
+  .hero-foot{margin-top:36px}
+  .pillars{grid-template-columns:minmax(0,1fr)}
+  .pillar,.pillar + .pillar{padding:24px 0;border-left:none;border-bottom:1px solid var(--line)}
+  .cgrid{grid-template-columns:minmax(0,1fr)}
+  .axes{grid-template-columns:minmax(0,1fr)}
+  .axes li:nth-child(odd){padding-right:0}
+  form{grid-template-columns:minmax(0,1fr)}
+  .info li{grid-template-columns:48px minmax(0,1fr)}
+  .info .copy{grid-column:2;justify-self:start}
+  .f-top{grid-template-columns:minmax(0,1fr)}
+  .tab{grid-template-columns:40px minmax(0,1fr) 24px;padding:18px 2px}
+  .cta-film .btn{width:100%}
+}
+</style>
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="logo" viewBox="14 14 254 212">
+      <path fill="var(--logo-grey)" fill-rule="evenodd" d="M143.8,220.0C143.0,219.9 139.0,219.8 135.0,219.8C128.7,219.7 127.3,219.6 124.7,219.3C121.2,219.0 117.8,218.7 113.0,218.4C108.1,218.2 106.0,217.9 103.5,217.4C102.3,217.2 100.0,216.9 98.5,216.7C93.7,216.2 90.9,215.8 88.4,215.2C87.0,215.0 85.0,214.6 83.8,214.4C82.5,214.2 80.8,213.9 79.8,213.7C77.5,213.2 75.9,212.9 73.2,212.6C60.8,210.7 51.2,207.7 54.6,206.8C55.6,206.5 61.6,206.4 63.8,206.7C66.4,206.9 68.8,207.1 72.8,207.2C76.0,207.4 78.0,207.5 81.4,207.8C83.3,207.9 102.2,207.8 103.7,207.6C110.0,206.9 109.5,206.1 101.4,203.6C91.4,200.6 86.6,199.0 83.3,197.5C82.0,196.9 80.1,196.1 79.0,195.7C77.0,194.8 73.5,193.2 70.3,191.6C68.8,190.8 62.8,187.5 60.0,185.8C52.3,181.1 41.9,172.5 36.4,166.3C35.5,165.2 34.4,164.0 34.0,163.5C31.6,160.8 30.0,158.6 27.1,154.0C14.7,134.1 15.8,115.5 30.8,94.3C31.9,92.8 32.9,91.5 34.7,89.5C35.4,88.8 36.9,87.0 38.1,85.7C40.8,82.7 41.0,82.5 43.5,80.4C48.6,76.2 50.7,74.6 52.1,73.9C53.9,72.9 54.1,72.2 53.4,69.1C51.9,63.0 52.4,57.2 55.1,49.3C56.8,44.2 61.1,37.7 64.9,34.7C65.6,34.1 66.8,33.1 67.5,32.4C69.5,30.6 72.4,28.8 76.5,26.9C77.7,26.4 79.1,25.8 79.8,25.5C81.7,24.6 82.1,24.5 89.0,22.6C91.8,21.9 94.7,21.4 98.4,21.1C99.6,21.0 101.7,20.7 103.1,20.5C109.4,19.6 124.2,19.4 128.6,20.2C130.8,20.6 132.7,20.8 136.0,21.1C139.7,21.4 142.3,21.7 145.8,22.2C147.3,22.5 149.8,22.8 151.6,23.1C156.8,23.8 158.7,24.1 160.9,24.6C162.1,24.9 164.1,25.3 165.2,25.6C166.4,25.8 168.2,26.2 169.2,26.4C170.1,26.7 171.9,27.0 173.2,27.2C175.7,27.7 177.8,28.1 179.5,28.7C180.1,28.9 182.1,29.4 183.9,29.9C185.7,30.4 188.2,31.0 189.4,31.3C191.4,31.8 193.9,32.5 198.3,33.9C200.0,34.4 201.1,35.2 200.9,35.8C200.6,36.6 197.1,36.5 188.4,35.3C185.6,34.9 183.9,34.8 180.8,34.6C179.3,34.5 177.3,34.4 176.3,34.3C174.3,34.1 167.7,34.0 161.2,34.0C157.6,34.0 154.9,34.1 152.1,34.5C151.5,34.6 149.9,34.7 148.4,34.8C144.8,35.1 138.4,36.4 133.8,37.7C132.6,38.1 130.9,38.6 129.9,38.8C127.0,39.6 125.5,40.3 120.0,43.4C116.3,45.5 114.0,47.9 115.1,48.5C115.7,48.8 118.6,48.7 121.1,48.3C124.1,47.9 127.2,47.5 130.1,47.4C131.4,47.3 134.1,47.1 136.1,47.0C141.2,46.7 154.1,46.7 156.1,47.0C157.8,47.3 160.3,47.5 164.6,47.6C167.1,47.7 168.0,47.8 169.2,48.1C170.1,48.2 171.5,48.5 172.4,48.6C173.2,48.8 174.7,49.0 175.7,49.2C176.7,49.5 178.3,49.8 179.4,49.9C185.6,51.0 187.2,51.4 194.4,53.6C201.1,55.8 212.8,60.6 216.7,62.8C217.3,63.1 218.8,64.0 220.1,64.8C221.4,65.5 223.1,66.5 223.8,67.0C224.6,67.5 226.3,68.6 227.7,69.5C232.3,72.5 232.5,72.6 238.8,78.0C241.5,80.3 246.3,85.1 248.2,87.3C248.8,88.0 250.0,89.3 250.8,90.2C255.3,95.0 258.6,99.8 259.7,103.2C260.5,105.5 258.1,104.2 252.5,99.2C249.7,96.8 246.4,94.3 242.2,91.5C232.8,85.2 218.7,79.3 207.9,77.2C206.9,77.0 205.1,76.6 203.7,76.2C202.4,75.9 200.4,75.5 199.4,75.4C198.4,75.2 196.9,75.0 196.1,74.8C195.1,74.6 193.8,74.5 192.2,74.4C190.9,74.3 188.7,74.1 187.2,73.9C182.0,73.3 176.8,73.1 172.1,73.2C161.2,73.4 158.9,73.5 157.6,73.7C155.0,74.0 153.2,74.2 151.3,74.4C150.3,74.5 148.6,74.7 147.5,74.8C146.4,75.0 144.7,75.2 143.7,75.3C140.9,75.6 131.2,77.6 127.7,78.6C125.6,79.2 119.9,81.2 117.2,82.3C116.0,82.8 114.2,83.4 113.2,83.8C109.4,85.0 107.7,86.4 107.9,88.1C108.2,90.5 113.5,96.9 119.2,101.6C120.2,102.3 121.4,103.4 122.0,103.9C123.8,105.5 124.4,105.9 126.2,107.1C127.2,107.8 128.8,108.9 129.9,109.8C130.9,110.5 132.6,111.8 133.5,112.4C139.4,116.6 137.6,118.5 130.2,116.0C125.1,114.2 121.3,113.0 119.4,112.4C118.3,112.1 116.8,111.7 116.0,111.4C115.2,111.1 113.6,110.6 112.4,110.2C111.2,109.8 109.3,109.1 108.1,108.7C106.9,108.2 104.8,107.5 103.4,107.0C100.8,106.1 94.8,103.9 92.9,103.1C89.8,101.8 89.8,101.8 87.0,107.2C80.4,120.0 80.3,133.1 86.8,142.8C87.3,143.5 88.2,144.9 88.8,145.8C89.9,147.5 93.8,152.2 95.2,153.5C96.8,155.0 101.2,158.6 102.6,159.6C103.5,160.2 104.4,160.8 104.8,161.2C112.0,166.6 123.5,172.2 134.1,175.2C143.9,178.1 147.4,178.9 152.2,179.6C153.1,179.7 154.8,179.9 155.9,180.1C158.3,180.5 159.9,180.7 163.3,180.9C166.0,181.0 166.3,181.1 167.7,181.4C171.4,182.3 173.2,179.1 175.0,168.9C175.8,164.2 175.5,157.3 174.2,154.0C174.0,153.4 173.6,152.2 173.2,151.2C171.6,146.2 170.4,144.1 168.6,142.0C168.2,141.6 167.2,140.5 166.5,139.6C163.5,136.0 161.9,134.4 159.4,132.3C158.5,131.6 157.2,130.4 156.5,129.8C155.8,129.1 154.3,127.9 153.3,127.1C149.0,123.6 148.1,122.2 149.9,121.8C150.6,121.5 151.7,121.8 155.2,122.8C156.9,123.3 159.1,124.0 160.1,124.3C161.1,124.5 162.7,125.1 163.7,125.4C164.7,125.8 165.9,126.2 166.5,126.4C168.4,126.9 169.9,127.4 171.6,128.1C172.5,128.5 174.1,129.2 175.2,129.6C176.4,129.9 178.7,130.8 180.4,131.5C182.2,132.2 184.3,133.0 185.2,133.3C186.1,133.7 187.7,134.4 188.8,134.9C189.9,135.5 191.8,136.3 193.0,136.9C207.6,143.5 217.9,152.2 222.9,161.9C224.9,165.7 225.3,165.9 228.3,163.9C228.9,163.5 230.4,162.6 231.6,161.9C234.1,160.4 237.6,158.1 240.1,156.2C241.1,155.5 242.2,154.7 242.7,154.3C243.8,153.6 246.7,151.3 249.5,149.1C260.0,140.7 261.1,139.9 261.2,141.2C261.3,142.0 259.0,145.7 256.2,149.1C251.2,155.4 248.4,158.7 246.1,161.1C245.1,162.1 243.4,163.9 242.4,165.1C241.3,166.2 240.3,167.2 240.2,167.3C240.1,167.4 238.9,168.5 237.5,169.8C236.1,171.2 234.3,172.8 233.4,173.4C232.6,174.1 231.5,175.0 230.9,175.4C230.4,175.9 229.4,176.5 228.7,176.9C226.6,178.0 226.2,178.5 225.6,181.4C224.5,185.8 222.0,191.9 219.9,195.0C217.7,198.4 213.6,202.6 210.1,205.3C207.4,207.4 207.2,207.5 205.1,208.7C204.1,209.2 202.7,209.9 201.9,210.4C198.3,212.4 191.4,214.9 185.6,216.3C181.0,217.4 175.1,218.4 171.8,218.8C170.3,218.9 168.1,219.1 166.9,219.2C160.8,220.0 149.0,220.3 143.8,220.0Z"/>
+      <path fill="var(--logo-red)" fill-rule="evenodd" d="M143.9,220.9C143.1,220.8 138.9,220.7 134.6,220.6C128.1,220.5 126.3,220.5 124.4,220.3C120.3,219.8 118.0,219.6 115.4,219.5C114.1,219.4 112.4,219.3 111.8,219.2C111.1,219.2 110.0,219.1 109.2,219.1C105.8,218.9 104.4,218.7 102.4,218.3C101.3,218.1 99.6,217.8 98.8,217.7C98.0,217.6 96.6,217.4 95.7,217.2C94.8,217.1 93.2,216.9 92.1,216.8C90.8,216.7 89.4,216.5 88.2,216.2C87.2,215.9 85.0,215.5 83.3,215.2C81.6,215.0 79.9,214.7 79.5,214.6C78.6,214.3 74.8,213.7 73.7,213.6C71.2,213.3 63.3,211.9 59.8,211.1C59.1,210.9 57.2,210.4 55.4,210.0C50.1,208.7 48.7,208.3 47.4,207.6C46.5,207.2 45.9,206.9 44.1,206.5C37.6,204.9 42.7,203.7 52.2,204.7C54.7,205.0 57.2,205.2 60.5,205.3C61.4,205.4 62.8,205.5 63.8,205.6C65.5,205.9 69.0,206.1 73.7,206.4C75.1,206.4 77.0,206.6 77.9,206.6C83.3,207.0 102.0,207.1 104.4,206.7C105.0,206.6 106.7,206.5 108.1,206.4C111.3,206.3 116.2,205.7 120.0,204.9C120.6,204.8 122.2,204.5 123.5,204.4C125.9,204.1 126.5,204.0 129.9,203.3C132.2,202.7 133.7,202.4 135.4,202.1C136.2,202.0 137.5,201.6 138.4,201.3C139.2,201.1 140.6,200.7 141.3,200.6C142.3,200.3 143.0,200.1 143.9,199.6C144.6,199.3 145.6,198.9 146.3,198.7C147.6,198.3 147.7,198.3 151.5,196.6C153.0,196.0 154.5,195.2 154.9,195.0C155.2,194.7 156.4,193.9 157.5,193.1C158.6,192.4 159.9,191.5 160.5,191.1C161.2,190.7 161.7,190.3 162.1,189.7C162.6,189.1 163.0,188.7 163.6,188.4C165.0,187.6 166.7,185.7 168.2,183.4C168.7,182.7 169.5,181.5 170.0,180.8C171.6,178.7 172.4,176.8 172.9,174.6C173.1,173.6 173.4,172.0 173.7,170.9C174.5,167.3 174.8,163.1 174.4,159.9C174.3,159.0 174.2,157.8 174.1,157.1C174.1,156.3 173.9,155.6 173.6,154.8C173.3,154.1 172.9,152.9 172.7,152.1C172.4,151.2 171.9,149.9 171.5,149.0C171.1,148.1 170.7,147.2 170.6,146.9C170.2,145.4 169.6,144.6 167.7,142.5C167.2,142.0 166.4,141.0 166.0,140.4C165.5,139.7 164.5,138.6 163.9,137.9C163.2,137.2 162.3,136.3 162.0,135.8C161.2,134.9 158.8,133.0 157.4,132.1C156.9,131.7 156.1,131.1 155.7,130.5C154.4,129.1 154.0,128.7 153.1,128.1C152.7,127.8 151.9,127.2 151.4,126.8C151.0,126.3 150.0,125.6 149.2,125.1C146.8,123.6 144.7,121.0 145.1,120.1C145.6,119.2 148.7,119.5 152.6,120.9C156.3,122.2 159.3,123.1 160.8,123.5C161.7,123.7 163.2,124.2 164.1,124.6C165.1,124.9 166.4,125.4 167.1,125.6C168.7,125.9 170.2,126.4 172.6,127.5C173.5,127.9 175.7,128.7 177.3,129.3C178.9,129.9 180.6,130.5 181.0,130.7C181.5,130.9 182.3,131.2 182.8,131.4C183.4,131.6 184.2,131.9 184.6,132.1C185.1,132.3 185.9,132.6 186.4,132.8C187.2,133.0 188.7,133.7 189.8,134.3C190.1,134.5 190.9,134.8 191.6,135.1C193.5,135.9 199.4,138.9 200.7,139.7C201.3,140.1 202.1,140.6 202.4,140.8C203.7,141.4 206.9,143.3 207.6,143.9C208.1,144.3 208.9,144.9 209.6,145.3C210.2,145.8 210.9,146.3 211.2,146.6C211.5,146.9 212.2,147.5 212.8,148.0C216.7,151.0 222.0,157.4 223.7,161.2C224.0,161.7 224.7,163.1 225.2,164.3C228.1,170.1 227.8,180.5 224.5,187.9C224.2,188.6 223.7,189.7 223.3,190.6C221.1,196.0 216.1,202.1 210.4,206.3C209.7,206.8 208.8,207.5 208.4,207.9C207.9,208.3 207.3,208.8 206.8,209.0C205.6,209.4 204.3,210.1 202.0,211.4C200.9,212.0 199.5,212.7 198.8,212.9C198.1,213.2 197.0,213.6 196.4,213.9C194.7,214.6 192.8,215.3 191.1,215.8C190.3,216.0 189.2,216.3 188.6,216.5C187.4,216.9 180.6,218.4 179.0,218.6C178.5,218.7 177.2,218.9 176.2,219.1C175.2,219.3 173.9,219.5 173.3,219.6C171.8,219.7 167.7,220.1 165.8,220.3C162.0,220.8 147.7,221.1 143.9,220.9ZM138.2,119.0C136.2,118.8 130.2,117.2 127.8,116.1C127.0,115.8 125.5,115.3 124.3,114.9C123.1,114.6 121.5,114.2 120.8,113.9C120.0,113.6 118.7,113.2 117.9,113.0C117.1,112.8 116.0,112.5 115.5,112.2C114.9,112.0 113.7,111.6 112.7,111.3C111.7,111.0 109.8,110.3 108.5,109.8C105.4,108.6 103.3,107.8 101.6,107.4C100.9,107.2 99.5,106.7 98.6,106.3C97.7,105.9 96.1,105.3 95.1,104.9C94.0,104.5 92.7,104.0 92.0,103.6C90.8,103.0 87.6,101.6 86.1,101.1C85.7,100.9 84.9,100.6 84.4,100.3C83.9,100.1 82.9,99.7 82.3,99.4C81.7,99.2 80.5,98.6 79.5,98.1C78.6,97.7 77.7,97.2 77.5,97.2C77.4,97.1 76.7,96.7 76.0,96.1C73.6,94.3 72.6,93.7 71.2,93.1C69.4,92.4 68.8,92.0 67.7,91.1C67.2,90.7 66.4,90.0 65.8,89.6C65.3,89.2 64.5,88.4 64.1,87.9C63.5,87.2 62.8,86.5 61.7,85.8C59.9,84.4 59.5,84.0 57.9,81.8C56.2,79.6 56.1,79.5 55.4,77.7C55.1,76.9 54.6,75.7 54.3,75.2C53.7,73.8 53.6,73.6 52.7,70.0C50.9,62.9 51.0,60.2 53.9,49.8C55.2,44.8 60.6,36.6 64.4,33.9C64.9,33.5 65.8,32.7 66.3,32.1C67.9,30.3 71.7,27.9 75.9,26.2C76.8,25.8 78.4,25.1 79.4,24.6C80.9,23.9 81.5,23.6 83.3,23.2C84.5,22.9 86.2,22.4 87.1,22.1C89.9,21.3 95.1,20.4 98.2,20.2C99.0,20.1 100.5,19.9 101.7,19.8C106.1,19.0 109.8,18.8 119.2,18.9C126.2,19.0 127.1,19.0 128.6,19.2C132.9,19.9 133.5,20.0 134.4,20.1C138.8,20.4 145.5,21.2 148.7,21.8C149.2,21.9 150.9,22.1 152.5,22.3C156.3,22.7 158.9,23.1 160.1,23.4C161.8,23.8 164.1,24.3 166.9,24.9C168.4,25.3 170.4,25.7 171.3,25.9C172.2,26.2 173.4,26.4 173.9,26.5C176.1,26.8 178.8,27.4 180.2,27.9C182.2,28.6 184.1,29.1 185.4,29.3C186.1,29.4 187.1,29.7 187.8,29.9C188.5,30.1 189.6,30.4 190.2,30.5C190.9,30.6 192.7,31.1 194.1,31.5C195.6,31.9 197.5,32.4 198.2,32.6C200.8,33.1 203.2,34.0 204.5,34.8C205.2,35.2 208.7,36.7 210.4,37.3C213.5,38.4 210.5,39.5 206.3,38.8C205.6,38.7 204.3,38.5 203.3,38.4C202.3,38.3 200.7,38.1 199.6,37.9C195.9,37.4 193.2,37.0 191.6,36.8C189.6,36.6 187.8,36.3 185.6,36.0C183.5,35.7 181.3,35.5 179.6,35.5C179.0,35.5 177.5,35.4 176.3,35.2C171.3,34.7 156.4,34.8 152.8,35.4C152.0,35.5 150.3,35.7 149.0,35.8C145.9,35.9 145.5,36.0 144.1,36.3C143.5,36.5 142.5,36.7 142.0,36.8C140.2,37.0 136.4,37.9 134.5,38.5C133.4,38.9 131.7,39.3 130.6,39.6C128.3,40.1 125.8,41.0 124.0,42.1C123.8,42.3 122.9,42.8 122.2,43.2C118.9,44.9 118.1,45.4 115.6,47.7C114.2,48.9 113.8,49.4 113.3,50.6C113.0,51.3 112.8,51.6 111.5,52.9C110.2,54.3 110.0,54.6 109.3,55.8C108.9,56.6 108.4,57.5 108.1,58.0C107.5,59.0 107.1,60.3 106.9,61.9C106.8,62.6 106.6,63.3 106.5,63.6C106.3,63.9 106.0,64.5 105.8,64.9C103.9,68.6 104.0,77.6 106.1,82.6C106.6,83.7 107.2,85.1 107.4,85.7C108.0,87.5 109.3,89.7 110.5,91.2C111.0,91.9 111.9,92.9 112.4,93.6C113.4,95.0 118.4,99.9 119.5,100.7C120.0,101.0 120.6,101.5 120.9,101.8C121.3,102.1 122.0,102.7 122.5,103.0C123.0,103.4 123.6,103.9 123.8,104.1C124.4,104.8 125.6,105.7 126.8,106.3C128.0,107.1 130.9,109.2 132.0,110.1C132.4,110.5 133.6,111.3 134.8,112.1C139.6,115.3 141.2,116.8 141.6,118.2C141.7,118.8 140.3,119.2 138.2,119.0Z"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-diag" viewBox="0 0 24 24"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5h3l1.5 4-2 1.3a11 11 0 0 0 6.1 6.1l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z" fill="currentColor"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="hdr" id="hdr">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Select Conseil, accueil">
+      <svg aria-hidden="true"><use href="#logo"/></svg>
+      <span><b>Select Conseil</b><small>Le Conseil Gagnant</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#expertises">Expertises</a>
+      <a href="#cabinet">Le cabinet</a>
+      <a href="#clients">Pour qui</a>
+      <a href="#contact">Contact</a>
+      <a class="btn" href="#contact">Prendre rendez-vous</a>
+    </nav>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main id="top">
+
+  <section class="hero" aria-labelledby="h1">
+    <img class="poster" src="assets/img/poster-hero.jpg" alt="" aria-hidden="true">
+    <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/img/poster-hero.jpg" aria-hidden="true">
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+    <svg class="hero-mark" aria-hidden="true"><use href="#logo"/></svg>
+    <div class="wrap">
+      <p class="kicker">Cabinet de conseil · Casablanca · Depuis 2008</p>
+      <h1 id="h1"><span class="line"><span style="--d:.15s">Le Conseil</span></span><span class="line"><span style="--d:.3s"><em>Gagnant.</em></span></span></h1>
+      <p class="lede" style="--d:.65s">Comptabilité, fiscalité, droit des sociétés, management et ressources humaines : une équipe pluridisciplinaire au service de votre entreprise, quels que soient sa taille et son secteur.</p>
+      <div class="cta" style="--d:.8s">
+        <a class="btn btn-white" href="#contact">Prendre rendez-vous <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#expertises">Nos expertises</a>
+      </div>
+      <div class="hero-foot" style="--d:1s">
+        <span class="scroll-cue"><i aria-hidden="true"></i> Découvrir le cabinet</span>
+        <span><b>421, Bd Abdelmoumen</b> · Casablanca</span>
+        <span><b>05 22 86 17 61</b></span>
+        <button class="video-toggle" type="button" data-video="hero-video" aria-pressed="false"><svg aria-hidden="true"><use href="#i-pause"/></svg><span>Pause vidéo</span></button>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <ul><li>Assistance comptable</li><li>Conseil fiscal</li><li>Conseil juridique</li><li>Conseil en management</li><li>Ressources humaines</li><li>Services aux entrepreneurs</li></ul>
+      <ul><li>Assistance comptable</li><li>Conseil fiscal</li><li>Conseil juridique</li><li>Conseil en management</li><li>Ressources humaines</li><li>Services aux entrepreneurs</li></ul>
+    </div>
+  </div>
+
+  <section class="statement" aria-labelledby="st-k">
+    <div class="wrap">
+      <div class="grid">
+        <p class="kicker rv" id="st-k">Notre raison d'être</p>
+        <p class="big" id="statement">Capitaliser une vaste expérience du [conseil] et du [management] pour offrir des services multidisciplinaires et aider chaque entreprise à atteindre ses [objectifs].</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar rv"><span class="n">01 · PRINCIPE</span><h3>Indépendance</h3><p>Un avis libre, dans l'intérêt exclusif du client.</p></div>
+        <div class="pillar rv" style="--d:.12s"><span class="n">02 · PRINCIPE</span><h3>Compétence</h3><p>Des équipes spécialisées pour chaque domaine.</p></div>
+        <div class="pillar rv" style="--d:.24s"><span class="n">03 · PRINCIPE</span><h3>Excellence</h3><p>Une exigence constante dans chaque mission.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exp" id="expertises" aria-labelledby="exp-h">
+    <div class="wrap">
+      <div class="exp-head">
+        <div>
+          <p class="kicker rv">Nos expertises</p>
+          <h2 class="h-xl rv" id="exp-h" style="margin-top:16px">Du quotidien comptable aux décisions stratégiques</h2>
+        </div>
+        <p class="rv">Six domaines d'intervention coordonnés par une même équipe, pour vous éviter de multiplier les interlocuteurs.</p>
+      </div>
+
+      <div class="switch">
+        <div class="tabs rv" role="tablist" aria-label="Domaines d'expertise">
+          <button class="tab" role="tab" id="t0" aria-controls="p0" aria-selected="true"><span class="i">01</span><span class="t">Assistance comptable</span><svg class="a" aria-hidden="true"><use href="#i-diag"/></svg></button>
+          <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="false" tabindex="-1"><span class="i">02</span><span class="t">Conseil fiscal</span><svg class="a" aria-hidden="true"><use href="#i-diag"/></svg></button>
+          <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1"><span class="i">03</span><span class="t">Conseil juridique</span><svg class="a" aria-hidden="true"><use href="#i-diag"/></svg></button>
+          <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"><span class="i">04</span><span class="t">Conseil en management</span><svg class="a" aria-hidden="true"><use href="#i-diag"/></svg></button>
+          <button class="tab" role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1"><span class="i">05</span><span class="t">Ressources humaines</span><svg class="a" aria-hidden="true"><use href="#i-diag"/></svg></button>
+          <button class="tab" role="tab" id="t5" aria-controls="p5" aria-selected="false" tabindex="-1"><span class="i">06</span><span class="t">Services aux entrepreneurs</span><svg class="a" aria-hidden="true"><use href="#i-diag"/></svg></button>
+        </div>
+
+        <div class="stage rv" style="--d:.15s">
+          <div class="media">
+            <img class="on" src="assets/img/comptabilite.jpg" alt="Comptable travaillant avec une calculatrice et un ordinateur" width="1400" height="933">
+            <img src="assets/img/fiscal.jpg" alt="Calcul fiscal sur une calculatrice" width="1400" height="933" loading="lazy">
+            <img src="assets/img/juridique.jpg" alt="Signature d'un contrat" width="1400" height="933" loading="lazy">
+            <img src="assets/img/management.jpg" alt="Réunion de direction" width="1400" height="933" loading="lazy">
+            <img src="assets/img/rh.jpg" alt="Équipe de collaborateurs" width="1400" height="933" loading="lazy">
+            <img src="assets/img/entrepreneurs.jpg" alt="Poignée de main entre deux entrepreneurs" width="1400" height="933" loading="lazy">
+            <span class="tag" id="media-tag">Comptabilité</span>
+          </div>
+          <div class="panel enter" role="tabpanel" id="p0" aria-labelledby="t0">
+            <h3>Assistance comptable au quotidien</h3>
+            <p>Des solutions comptables opérationnelles pour les directions comptables et financières, de la gestion du quotidien à la conception de projets d'optimisation.</p>
+            <ul><li>Tenue comptable</li><li>Directions financières</li><li>Projets d'optimisation</li></ul>
+          </div>
+          <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1" hidden>
+            <h3>Conseil fiscal</h3>
+            <p>Un accompagnement fiscal complet, de la veille à l'assistance en cas de contrôle.</p>
+            <ul><li>Veille fiscale</li><li>Diagnostic &amp; audit fiscal</li><li>Mise en place de procédures</li><li>Optimisation &amp; montages fiscaux</li><li>Assistance en cas de contrôle</li></ul>
+          </div>
+          <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+            <h3>Conseil juridique</h3>
+            <p>Une gamme complète de services pour la vie de votre société.</p>
+            <ul><li>Création de société</li><li>Augmentation de capital</li><li>Transfert de siège</li><li>Cession de parts</li><li>Mise à jour des statuts</li></ul>
+          </div>
+          <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+            <h3>Conseil en management</h3>
+            <p>Une équipe multidisciplinaire pour éclairer les décisions complexes, anticiper les évolutions et allouer les moyens nécessaires à leur mise en œuvre.</p>
+            <ul><li>Décisions stratégiques</li><li>Anticipation</li><li>Allocation des moyens</li></ul>
+          </div>
+          <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+            <h3>Gestion des ressources humaines</h3>
+            <p>Toute la gestion sociale de votre entreprise, de la paie à l'audit social.</p>
+            <ul><li>Paie</li><li>Déclarations sociales</li><li>Contrats de travail</li><li>Formation intra / inter-entreprise</li><li>Contrôle de gestion</li><li>Audit social</li></ul>
+          </div>
+          <div class="panel" role="tabpanel" id="p5" aria-labelledby="t5" hidden>
+            <h3>Services aux entrepreneurs</h3>
+            <p>Un accompagnement dans les démarches et formalités, et l'accès à un carnet d'adresses de partenaires et de financement.</p>
+            <ul><li>Démarches &amp; formalités</li><li>Réseau de partenaires</li><li>Financement</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="film" aria-labelledby="film-h">
+    <img class="poster" src="assets/img/poster-mosquee.jpg" alt="" aria-hidden="true" loading="lazy">
+    <video id="film-video" autoplay muted loop playsinline preload="none" poster="assets/img/poster-mosquee.jpg" aria-hidden="true" data-lazy>
+      <source data-src="assets/video/mosquee.mp4" type="video/mp4">
+    </video>
+    <div class="wrap">
+      <p class="kicker rv" style="color:#ffd0d0">Select Conseil en chiffres</p>
+      <h2 class="rv" id="film-h" style="margin-top:16px">Ancré à Casablanca, au service des entreprises depuis 2008.</h2>
+      <div class="counters">
+        <div class="counter rv"><b data-count="2008" data-from="1990">2008</b><span>Année de création du cabinet</span></div>
+        <div class="counter rv" style="--d:.1s"><b data-count="years">18</b><span>Années d'accompagnement</span></div>
+        <div class="counter rv" style="--d:.2s"><b data-count="6">6</b><span>Domaines d'expertise réunis</span></div>
+        <div class="counter rv" style="--d:.3s"><b data-count="3">3</b><span>Principes directeurs</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cabinet" id="cabinet" aria-labelledby="cab-h">
+    <div class="wrap cab-grid">
+      <div class="cab-media rv">
+        <figure class="f1"><img src="assets/img/casablanca.jpg" alt="Vue sur les toits de Casablanca" loading="lazy" data-parallax=".06"><figcaption>Casablanca</figcaption></figure>
+        <figure class="f2"><img src="assets/img/bureau.jpg" alt="Espace de travail moderne et lumineux" loading="lazy" data-parallax="-.05"></figure>
+      </div>
+      <div>
+        <p class="kicker rv">Le cabinet</p>
+        <h2 class="h-xl rv" id="cab-h">Un cabinet casablancais, une organisation globale</h2>
+        <div class="cab-copy rv">
+          <p>Select Conseil a su convaincre ses clients par la diversification d'une offre adaptée, grâce à un alignement stratégique clair.</p>
+          <p>Depuis son lancement, le cabinet n'a cessé de densifier son réseau relationnel et ses partenariats. Vous bénéficiez des moyens et de la puissance d'une organisation globale, avec la compréhension des sensibilités économiques et culturelles locales.</p>
+        </div>
+        <ul class="axes rv" aria-label="Notre alignement stratégique">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Positionnement</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Relation client</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Capital humain</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Organisation</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Gouvernance</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Partage du savoir &amp; innovation</li>
+        </ul>
+        <div class="partners rv" aria-label="Nos partenaires"><span>Banques</span><span>Cabinets d'avocats</span><span>Cabinets notariaux</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clients" id="clients" aria-labelledby="cli-h">
+    <div class="wrap">
+      <div class="clients-head">
+        <div>
+          <p class="kicker rv">Pour qui</p>
+          <h2 class="h-xl rv" id="cli-h" style="margin-top:16px">Toutes les entreprises, tous les secteurs</h2>
+        </div>
+        <p class="rv">Petite, moyenne ou grande, publique ou privée : Select Conseil vous aide à être plus efficace pour atteindre vos objectifs.</p>
+      </div>
+      <div class="cgrid">
+        <article class="cc rv"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 6v8m0 0-5 5m5-5 5 5M8 34h24M12 34V22h16v12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Porteurs de projet</h3><p>Création de société et premières formalités.</p></article>
+        <article class="cc rv" style="--d:.08s"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 34V16l10-6v24M16 34V12l18 8v14M6 34h28M22 24h6M22 29h6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Petites &amp; moyennes entreprises</h3><p>Comptabilité, paie et fiscalité au quotidien.</p></article>
+        <article class="cc rv" style="--d:.16s"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 34h28M9 34V8h12v26M21 16h10v18M13 13h4M13 19h4M13 25h4M25 21h2M25 27h2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Grandes entreprises</h3><p>Audit, optimisation et conseil aux directions.</p></article>
+        <article class="cc rv" style="--d:.24s"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 15 20 6l14 9M8 15h24M10 15v15M17 15v15M23 15v15M30 15v15M6 34h28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Public &amp; privé</h3><p>Une approche adaptée à chaque environnement.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-film" aria-labelledby="cta-h">
+    <img class="poster" src="assets/img/poster-equipe.jpg" alt="" aria-hidden="true" loading="lazy">
+    <video id="cta-video" autoplay muted loop playsinline preload="none" poster="assets/img/poster-equipe.jpg" aria-hidden="true" data-lazy>
+      <source data-src="assets/video/equipe.mp4" type="video/mp4">
+    </video>
+    <div class="wrap">
+      <div>
+        <h2 class="rv" id="cta-h">Restons en contact.</h2>
+        <p class="rv">Un projet, une question fiscale, une société à créer ? Parlons-en.</p>
+      </div>
+      <a class="btn btn-white rv" href="#contact">Écrire au cabinet <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="ct-h">
+    <div class="wrap ct-grid">
+      <div>
+        <p class="kicker rv">Contact</p>
+        <h2 class="h-xl rv" id="ct-h">Parlons de votre dossier</h2>
+        <ul class="info rv">
+          <li><span class="ico"><svg aria-hidden="true"><use href="#i-phone"/></svg></span><span><small>Téléphone</small><strong>05 22 86 17 61</strong></span><button class="copy" type="button" data-copy="05 22 86 17 61">Copier</button></li>
+          <li><span class="ico"><svg aria-hidden="true"><use href="#i-mail"/></svg></span><span><small>Email</small><strong>contact@selectconseil.com</strong></span><button class="copy" type="button" data-copy="contact@selectconseil.com">Copier</button></li>
+          <li><span class="ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></span><span><small>Adresse</small><strong>421, Bd Abdelmoumen, Résidence Ryad Abdelmoumen, Imm. B, 4ᵉ étage, N°17, Casablanca</strong></span></li>
+        </ul>
+      </div>
+      <form id="form" class="rv" novalidate>
+        <div class="field"><label for="f-name">Nom complet <span class="req">*</span></label><input id="f-name" name="name" autocomplete="name" required><span class="err" id="e-name"></span></div>
+        <div class="field"><label for="f-company">Entreprise</label><input id="f-company" name="company" autocomplete="organization"></div>
+        <div class="field"><label for="f-email">Email <span class="req">*</span></label><input id="f-email" name="email" type="email" autocomplete="email" required><span class="err" id="e-email"></span></div>
+        <div class="field"><label for="f-phone">Téléphone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="field full"><label for="f-topic">Votre demande concerne</label>
+          <select id="f-topic" name="topic">
+            <option>Assistance comptable</option><option>Conseil fiscal</option><option>Conseil juridique / création de société</option><option>Conseil en management</option><option>Ressources humaines &amp; paie</option><option>Services aux entrepreneurs</option><option>Autre demande</option>
+          </select>
+        </div>
+        <div class="field full"><label for="f-msg">Message <span class="req">*</span></label><textarea id="f-msg" name="message" required></textarea><span class="err" id="e-msg"></span></div>
+        <div class="hp" aria-hidden="true"><label for="f-hp">Ne pas remplir</label><input id="f-hp" name="_honey" tabindex="-1" autocomplete="off"></div>
+        <div class="form-foot">
+          <p>Vos informations servent uniquement à répondre à votre demande.</p>
+          <button class="btn btn-red" type="submit" id="send">Envoyer la demande <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+        <div class="status" id="status" role="status" hidden></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap f-top">
+    <div>
+      <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg><span><b>Select Conseil</b><small>Le Conseil Gagnant</small></span></a>
+      <p class="about">Cabinet de conseil pluridisciplinaire à Casablanca depuis 2008.</p>
+    </div>
+    <div><h4>Le cabinet</h4><ul><li><a href="#cabinet">Qui sommes-nous</a></li><li><a href="#clients">Pour qui</a></li><li><a href="#contact">Prendre rendez-vous</a></li></ul></div>
+    <div><h4>Expertises</h4><ul><li><a href="#expertises" data-tab="0">Comptabilité</a></li><li><a href="#expertises" data-tab="1">Fiscalité</a></li><li><a href="#expertises" data-tab="2">Juridique</a></li><li><a href="#expertises" data-tab="3">Management</a></li><li><a href="#expertises" data-tab="4">Ressources humaines</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>05 22 86 17 61</li><li>contact@selectconseil.com</li><li>421, Bd Abdelmoumen, N°17, Casablanca</li></ul></div>
+  </div>
+  <div class="wrap f-bot"><span>© <span id="yr">2026</span> Select Conseil. Tous droits réservés.</span><span>Photos &amp; vidéos : Pexels</span></div>
+</footer>
+
+<button class="totop" id="totop" type="button" aria-label="Revenir en haut"><svg aria-hidden="true"><use href="#i-up"/></svg></button>
+
+<script>
+(function(){
+  var d=document, root=d.documentElement; root.classList.add('js');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var now=new Date().getFullYear(); d.getElementById('yr').textContent=now;
+
+  /* header state, progress, back-to-top */
+  var hdr=d.getElementById('hdr'), prog=d.getElementById('progress'), top=d.getElementById('totop');
+  function onScroll(){
+    var y=scrollY, h=root.scrollHeight-innerHeight;
+    hdr.classList.toggle('solid', y>40);
+    prog.style.setProperty('--p', h>0?(y/h).toFixed(4):0);
+    top.classList.toggle('show', y>innerHeight);
+    parallax();
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+  top.addEventListener('click',function(){scrollTo({top:0,behavior:reduce?'auto':'smooth'})});
+
+  /* mobile menu */
+  var burger=d.getElementById('burger'), nav=d.getElementById('nav');
+  function menu(open){nav.classList.toggle('open',open);burger.setAttribute('aria-expanded',open);hdr.classList.toggle('menu-open',open);d.body.style.overflow=open?'hidden':'';}
+  burger.addEventListener('click',function(){menu(!nav.classList.contains('open'))});
+  nav.addEventListener('click',function(e){if(e.target.closest('a'))menu(false)});
+  d.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){menu(false);burger.focus();}});
+
+  /* active nav link */
+  var links=[].slice.call(nav.querySelectorAll('a:not(.btn)'));
+  if('IntersectionObserver' in window){
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
+    ['expertises','cabinet','clients','contact'].forEach(function(id){so.observe(d.getElementById(id))});
+  }
+
+  /* reveal on scroll */
+  var rv=[].slice.call(d.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window && !reduce){
+    var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+    rv.forEach(function(el){ro.observe(el)});
+    setTimeout(function(){rv.forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight)el.classList.add('in')})},60);
+  } else rv.forEach(function(el){el.classList.add('in')});
+
+  /* statement: words light up while scrolling */
+  var st=d.getElementById('statement');
+  st.innerHTML=st.textContent.split(' ').map(function(w){var hl=/^\[.*\]/.test(w);w=w.replace(/[\[\]]/g,'');return '<span class="w'+(hl?' hl':'')+'">'+w+'</span>'}).join(' ');
+  var words=[].slice.call(st.querySelectorAll('.w'));
+  function lightWords(){
+    var r=st.getBoundingClientRect(), start=innerHeight*.85, end=innerHeight*.35;
+    var p=Math.min(1,Math.max(0,(start-r.top)/(start-end+r.height*.6)));
+    var n=Math.round(p*words.length);
+    words.forEach(function(w,i){w.classList.toggle('lit',reduce||i<n)});
+  }
+  addEventListener('scroll',lightWords,{passive:true}); lightWords();
+
+  /* expertise tabs */
+  var tabs=[].slice.call(d.querySelectorAll('.tab')), imgs=[].slice.call(d.querySelectorAll('.media img')), tag=d.getElementById('media-tag');
+  var tags=['Comptabilité','Fiscalité','Juridique','Management','Ressources humaines','Entrepreneurs'];
+  var cur=0, timer=null, userTouched=false;
+  function select(i,focus){
+    if(i===cur)return;
+    tabs.forEach(function(t,k){var on=k===i;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;var p=d.getElementById(t.getAttribute('aria-controls'));p.hidden=!on;p.classList.toggle('enter',on);});
+    imgs.forEach(function(im,k){im.classList.toggle('on',k===i)});
+    tag.textContent=tags[i]; cur=i; if(focus)tabs[i].focus();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){userTouched=true;select(i)});
+    t.addEventListener('keydown',function(e){var k=e.key;if(k==='ArrowDown'||k==='ArrowRight'){e.preventDefault();userTouched=true;select((cur+1)%tabs.length,true)}if(k==='ArrowUp'||k==='ArrowLeft'){e.preventDefault();userTouched=true;select((cur+tabs.length-1)%tabs.length,true)}if(k==='Home'){e.preventDefault();select(0,true)}if(k==='End'){e.preventDefault();select(tabs.length-1,true)}});
+  });
+  [].slice.call(d.querySelectorAll('[data-tab]')).forEach(function(a){a.addEventListener('click',function(){userTouched=true;select(+a.dataset.tab)})});
+  /* auto-advance while the section is on screen, until the visitor picks a tab */
+  if(!reduce && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){clearInterval(timer);if(e.isIntersecting&&!userTouched){timer=setInterval(function(){if(!userTouched)select((cur+1)%tabs.length)},5200)}})},{threshold:.35}).observe(d.getElementById('expertises'));
+  }
+
+  /* counters */
+  function countUp(el){
+    var target=el.dataset.count==='years'?now-2008:+el.dataset.count, from=+(el.dataset.from||0);
+    if(reduce){el.textContent=target;return}
+    var t0=null,dur=1600;
+    (function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur);p=1-Math.pow(1-p,3);el.textContent=Math.round(from+(target-from)*p);if(p<1)requestAnimationFrame(step)})(performance.now());
+  }
+  var counters=[].slice.call(d.querySelectorAll('[data-count]'));
+  counters.forEach(function(el){if(el.dataset.count==='years')el.textContent=now-2008});
+  if('IntersectionObserver' in window){
+    var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target);co.unobserve(e.target)}})},{threshold:.6});
+    counters.forEach(function(el){co.observe(el)});
+  }
+
+  /* parallax on cabinet photos */
+  var px=[].slice.call(d.querySelectorAll('[data-parallax]'));
+  function parallax(){
+    if(reduce)return;
+    px.forEach(function(im){var r=im.parentNode.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;var c=(r.top+r.height/2-innerHeight/2);im.style.transform='scale(1.12) translateY('+(c*+im.dataset.parallax).toFixed(1)+'px)'});
+  }
+
+  /* videos: lazy-load band videos, pause off-screen, respect reduced motion */
+  var vids=[].slice.call(d.querySelectorAll('video'));
+  function load(v){if(v.dataset.lazy===undefined)return;[].slice.call(v.querySelectorAll('source[data-src]')).forEach(function(s){s.src=s.dataset.src;s.removeAttribute('data-src')});delete v.dataset.lazy;v.load();}
+  function play(v){var p=v.play();if(p&&p.catch)p.catch(function(){})}
+  if(reduce){vids.forEach(function(v){v.removeAttribute('autoplay');v.pause()})}
+  else if('IntersectionObserver' in window){
+    var vo=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){load(v);if(!v.dataset.user)play(v)}else v.pause()})},{rootMargin:'200px 0px'});
+    vids.forEach(function(v){vo.observe(v)});
+  }
+  [].slice.call(d.querySelectorAll('.video-toggle')).forEach(function(b){
+    var v=d.getElementById(b.dataset.video);
+    function sync(){var paused=v.paused;b.setAttribute('aria-pressed',paused);b.querySelector('use').setAttribute('href',paused?'#i-play':'#i-pause');b.querySelector('span').textContent=paused?'Lire la vidéo':'Pause vidéo'}
+    b.addEventListener('click',function(){if(v.paused){delete v.dataset.user;play(v)}else{v.dataset.user='1';v.pause()}});
+    v.addEventListener('play',sync);v.addEventListener('pause',sync);sync();
+  });
+
+  /* copy buttons */
+  [].slice.call(d.querySelectorAll('.copy')).forEach(function(b){
+    b.addEventListener('click',function(){
+      var ok=function(){b.textContent='Copié';setTimeout(function(){b.textContent='Copier'},1600)};
+      var sel=function(){var s=b.parentNode.querySelector('strong'),r=d.createRange();r.selectNodeContents(s);var w=getSelection();w.removeAllRanges();w.addRange(r)};
+      if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(b.dataset.copy).then(ok,sel);else sel();
+    });
+  });
+
+  /* ===== Formulaire de contact → email (FormSubmit.co) =====
+     Adresse qui reçoit les demandes : modifier la ligne ci-dessous si besoin. */
+  var CONTACT_EMAIL='contact@selectconseil.com';
+
+  var f=d.getElementById('form'), status=d.getElementById('status'), send=d.getElementById('send');
+  function setErr(id,fieldId,msg){var e=d.getElementById(id);e.textContent=msg||'';d.getElementById(fieldId).closest('.field').classList.toggle('bad',!!msg);d.getElementById(fieldId).setAttribute('aria-invalid',!!msg);if(msg)d.getElementById(fieldId).setAttribute('aria-describedby',id);}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var el=f.elements, name=el['name'].value.trim(), email=el['email'].value.trim(), text=el['message'].value.trim();
+    if(el['_honey'].value)return;
+    setErr('e-name','f-name',name?'':'Indiquez votre nom.');
+    setErr('e-email','f-email',!email?'Indiquez votre email.':(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)?'':'Cette adresse email semble incomplète.'));
+    setErr('e-msg','f-msg',text?'':'Écrivez votre message.');
+    var firstBad=f.querySelector('[aria-invalid="true"]'); if(firstBad){firstBad.focus();return}
+    send.disabled=true; status.hidden=false; status.textContent='Envoi en cours…';
+    fetch('https://formsubmit.co/ajax/'+CONTACT_EMAIL,{
+      method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({_subject:'Nouvelle demande site web – '+el['topic'].value,_template:'table',_replyto:email,_captcha:'false',
+        'Nom':name,'Entreprise':el['company'].value.trim(),'Email':email,'Téléphone':el['phone'].value.trim(),'Demande':el['topic'].value,'Message':text})
+    }).then(function(r){return r.json().then(function(x){if(!r.ok||String(x.success)==='false')throw new Error(x.message||'Erreur')})})
+    .then(function(){status.textContent='Merci '+name+', votre demande a bien été envoyée. Le cabinet vous répondra rapidement.';f.reset()})
+    .catch(function(){status.textContent='L’envoi n’a pas abouti. Appelez-nous au 05 22 86 17 61 ou écrivez à '+CONTACT_EMAIL+'.'})
+    .finally(function(){send.disabled=false});
+  });
+
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
